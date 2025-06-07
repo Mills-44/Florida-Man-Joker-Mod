@@ -1,0 +1,14 @@
+{
+	"id": "floridaman",
+	"name": "Florida Jokers",
+	"author": ["InfamousInvictis & contributors"],
+	"description": "Florida-themed Joker mod.",
+	"prefix": "flor",
+	"main_file": "florida.lua",
+	"priority": 0,
+	"badge_colour": "0078d7",
+	"dependencies": [
+        "Steamodded (>=1.0.0~BETA-0530b)"
+    ],
+    "version": "1.0.0-FLORIDA-DEV"
+}
