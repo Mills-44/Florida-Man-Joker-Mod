@@ -6,7 +6,7 @@
 	"prefix": "flor",
 	"main_file": "florida.lua",
 	"priority": 0,
-	"badge_colour": "0078d7",
+	"badge_colour": "7d44c2",
 	"dependencies": [
         "Steamodded (>=1.0.0~BETA-0530b)"
     ],
