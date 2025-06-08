@@ -1,16 +1,5 @@
 SMODS.Joker{
     key = "10ToeJimbo",
-    loc_txt = {
-        name = "10 Toe Jimbo",
-        text = {
-            "Gain {C:money}$#1#{} if the",
-            "played hand is {C:attention}On Fire{}",
-            "{s:0.5} {}",
-            "{B:1,C:white,s:0.75,E:1}Code: CGNik",
-            "{B:1,C:white,s:0.75,E:1}Art: -----",
-            "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
-        },
-    },
     cost = 7,
     blueprint_compat = true,
     eternal_compat = true,
@@ -41,18 +30,6 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "AmusingPark",
-    loc_txt = {
-        name = "Amusing Park",
-        text = {
-            "Gains {X:mult,C:white}X#1#{} Mult per {C:attention}unique{} poker hand played this {C:attention}Ante{}",
-            "{C:inactive}(Currently {}{X:mult,C:white}X#2#{}{C:inactive} Mult){}",
-            "{C:inactive}(Poker Hands played: #4#){}",
-            "{s:0.5} {}",
-            "{B:1,C:white,s:0.75,E:1}Code: CGNik",
-            "{B:1,C:white,s:0.75,E:1}Art: -----",
-            "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
-        },
-    },
     cost = 7,
     blueprint_compat = true,
     eternal_compat = true,
@@ -132,18 +109,7 @@ SMODS.Joker{
 }
 
 SMODS.Joker{
-    key = "Ray Banned",
-    loc_txt = {
-        name = "Ray Banned",
-        text = {
-            "Played {C:hearts}Hearts{} and {C:diamonds}Diamonds{} turn into",
-            "{C:spades}Spades{} and {C:clubs}Clubs{} respectively",
-            "{s:0.5} {}",
-            "{B:1,C:white,s:0.75,E:1}Code: CGNik",
-            "{B:1,C:white,s:0.75,E:1}Art: -----",
-            "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
-        },
-    },
+    key = "RayBanned",
     cost = 6,
     blueprint_compat = false,
     eternal_compat = true,
@@ -155,15 +121,16 @@ SMODS.Joker{
         }}
     end,
     calculate = function(self,card,context)
-        if context.individual and context.cardarea == G.play then
-            if context.other_card:is_suit("Hearts") then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
+            local othercard = context.other_card
+            if othercard:is_suit("Hearts") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -172,32 +139,32 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Spades")
+                                SMODS.change_base(othercard, "Spades")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Spades}, context.other_card)
+                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Spades}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
                         delay(0.5)
                     end
                 }
-            elseif context.other_card:is_suit("Diamonds") then
+            elseif othercard:is_suit("Diamonds") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -206,18 +173,18 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Clubs")
+                                SMODS.change_base(othercard, "Clubs")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Clubs}, context.other_card)
+                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Clubs}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -230,18 +197,7 @@ SMODS.Joker{
 }
 
 SMODS.Joker{
-    key = "Red Handed",
-    loc_txt = {
-        name = "Red Handed",
-        text = {
-            "Played {C:spades}Spades{} and {C:clubs}Clubs{} turn into",
-            "{C:hearts}Hearts{} and {C:diamonds}Diamonds{} respectively",
-            "{s:0.5} {}",
-            "{B:1,C:white,s:0.75,E:1}Code: CGNik",
-            "{B:1,C:white,s:0.75,E:1}Art: -----",
-            "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
-        },
-    },
+    key = "RedHanded",
     cost = 6,
     blueprint_compat = false,
     eternal_compat = true,
@@ -253,15 +209,16 @@ SMODS.Joker{
         }}
     end,
     calculate = function(self,card,context)
-        if context.individual and context.cardarea == G.play then
-            if context.other_card:is_suit("Spades") then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
+            local othercard = context.other_card
+            if othercard:is_suit("Spades") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -270,32 +227,32 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Hearts")
+                                SMODS.change_base(othercard, "Hearts")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Hearts}, context.other_card)
+                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Hearts}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
                         delay(0.5)
                     end
                 }
-            elseif context.other_card:is_suit("Clubs") then
+            elseif othercard:is_suit("Clubs") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -304,18 +261,18 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Diamonds")
+                                SMODS.change_base(othercard, "Diamonds")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Diamonds}, context.other_card)
+                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Diamonds}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -329,17 +286,6 @@ SMODS.Joker{
 
 SMODS.Joker{
     key = "SunburntSam",
-    loc_txt = {
-        name = "Sunburnt Sam",
-        text = {
-            "{X:mult,C:white}X#1#{} Mult if all cards {C:attention}held in hand{}",
-            "are {C:hearts}Hearts{} or {C:diamonds}Diamonds{}",
-            "{s:0.5} {}",
-            "{B:1,C:white,s:0.75,E:1}Code: CGNik",
-            "{B:1,C:white,s:0.75,E:1}Art: gfsgfsgfs",
-            "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
-        },
-    },
     cost = 6,
     blueprint_compat = true,
     eternal_compat = true,
@@ -372,5 +318,3 @@ SMODS.Joker{
         end
     end
 }
-
--- add an anim to Ray Banned and Red Handed
