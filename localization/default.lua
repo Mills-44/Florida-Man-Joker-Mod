@@ -64,6 +64,17 @@ return {
 				        "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
 			        },
 			},
+			j_flor_BuccoJimbo = {
+				name = "Bucco Jimbo",
+			        text = {
+				        "At the end of the round, {C:attention}Bucco Jimbo{} shares any",
+					"{C:attention}treasure{} he found with you",
+				        "{s:0.5} {}",
+				        "{B:1,C:white,s:0.75,E:1}Code: CGNik",
+				        "{B:1,C:white,s:0.75,E:1}Art: Thunderbear",
+				        "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
+			        },
+			},
 		}
 	}
 }
