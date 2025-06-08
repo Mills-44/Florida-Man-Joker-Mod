@@ -372,7 +372,7 @@ SMODS.Joker{
                 totalWeight = totalWeight + v
             end
 
-            local random = pseudorandom("flor_buccojimbo",1,totalweight)
+            local random = pseudorandom("flor_buccojimbo",1,totalWeight)
 
             local itemIndex = 0
             for i,v in ipairs(weights) do
@@ -380,6 +380,7 @@ SMODS.Joker{
                     random = random - v
                 else
                     itemIndex = i
+                    break
                 end
             end
 
