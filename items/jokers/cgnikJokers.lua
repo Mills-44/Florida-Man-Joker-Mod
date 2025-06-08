@@ -284,8 +284,17 @@ SMODS.Joker{
     end
 }
 
+SMODS.Atlas{
+    key = "SunburntSam",
+    path = "SunburntSam.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Joker{
     key = "SunburntSam",
+    atlas = "SunburntSam",
+    pos = {x = 0, y = 0},
     cost = 6,
     blueprint_compat = true,
     eternal_compat = true,
@@ -319,8 +328,17 @@ SMODS.Joker{
     end
 }
 
+SMODS.Atlas{
+    key = "BuccoJimbo",
+    path = "BuccoJimbo.png",
+    px = 71,
+    py = 95
+}
+
 SMODS.Joker{
     key = "BuccoJimbo",
+    atlas = "BuccoJimbo",
+    pos = {x = 0, y = 0},
     cost = 8,
     blueprint_compat = true,
     eternal_compat = true,
