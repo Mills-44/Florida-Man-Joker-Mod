@@ -199,13 +199,6 @@ SMODS.Joker{
     end
 }
 
-SMODS.Atlas{
-    key = "SunburntSam",
-    path = "SunburntSam.png",
-    px = 71,
-    py = 95
-}
-
 SMODS.Joker{
     key = "SunburntSam",
     loc_txt = {
@@ -219,8 +212,6 @@ SMODS.Joker{
             "{B:1,C:white,s:0.75,E:1}Idea: InfamousInvictis"
         },
     },
-    atlas = "SunburntSam",
-    pos = {x = 0, y = 0},
     cost = 6,
     blueprint_compat = true,
     eternal_compat = true,
