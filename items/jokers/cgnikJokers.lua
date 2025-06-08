@@ -372,7 +372,7 @@ SMODS.Joker{
                 totalWeight = totalWeight + v
             end
 
-            local random = pseudorandom("flor_buccojimbo",1,totalweight)
+            local random = pseudorandom("flor_buccojimbo",1,totalWeight)
 
             local itemIndex = 0
             for i,v in ipairs(weights) do
@@ -380,6 +380,7 @@ SMODS.Joker{
                     random = random - v
                 else
                     itemIndex = i
+                    break
                 end
             end
 
@@ -393,7 +394,7 @@ SMODS.Joker{
                 return
             elseif itemIndex == 3 then
                 SMODS.calculate_effect({message="Planets!",colour = G.C.FILTER}, card)
-                pseudorandom("flor_buccojimbo_planets",1,card.ability.extra.planet_max)
+                local planetRandom = pseudorandom("flor_buccojimbo_planets",1,card.ability.extra.planet_max)
                 for count = 1,planetRandom,1 do
                     SMODS.add_card({set = "Planet",soulable = true})
                 end
@@ -401,7 +402,7 @@ SMODS.Joker{
             elseif itemIndex == 4 then
                 SMODS.calculate_effect({message="Money!",colour = G.C.FILTER}, card)
                 return {
-                    dollars = 10
+                    dollars = card.ability.extra.dollars
                 }
             elseif itemIndex == 5 then
                 SMODS.calculate_effect({message="Spectral!",colour = G.C.FILTER}, card)
