@@ -402,7 +402,7 @@ SMODS.Joker{
             elseif itemIndex == 4 then
                 SMODS.calculate_effect({message="Money!",colour = G.C.FILTER}, card)
                 return {
-                    dollars = 10
+                    dollars = card.ability.extra.dollars
                 }
             elseif itemIndex == 5 then
                 SMODS.calculate_effect({message="Spectral!",colour = G.C.FILTER}, card)
