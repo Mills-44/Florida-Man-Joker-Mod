@@ -121,7 +121,7 @@ SMODS.Joker{
         }}
     end,
     calculate = function(self,card,context)
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
             local othercard = context.other_card
             if othercard:is_suit("Hearts") then
                 return {
@@ -209,7 +209,7 @@ SMODS.Joker{
         }}
     end,
     calculate = function(self,card,context)
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
             local othercard = context.other_card
             if othercard:is_suit("Spades") then
                 return {
