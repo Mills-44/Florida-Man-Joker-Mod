@@ -9,6 +9,7 @@ SMODS.Joker{
 	cost = 4,
 	atlas = 'FloridaJawsome',
 	pos = { x = 0, y = 0 },
+	blueprint_compat = true,
 	calculate = function(self, card, context)
 		if context.skip_blind then
 			if #G.jokers.cards > 0 then
