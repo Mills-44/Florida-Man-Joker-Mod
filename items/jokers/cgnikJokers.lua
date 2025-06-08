@@ -122,14 +122,15 @@ SMODS.Joker{
     end,
     calculate = function(self,card,context)
         if context.individual and context.cardarea == G.play then
-            if context.other_card:is_suit("Hearts") then
+            local othercard = context.other_card
+            if othercard:is_suit("Hearts") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -138,32 +139,32 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Spades")
+                                SMODS.change_base(othercard, "Spades")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Spades}, context.other_card)
+                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Spades}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
                         delay(0.5)
                     end
                 }
-            elseif context.other_card:is_suit("Diamonds") then
+            elseif othercard:is_suit("Diamonds") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -172,18 +173,18 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Clubs")
+                                SMODS.change_base(othercard, "Clubs")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Clubs}, context.other_card)
+                        SMODS.calculate_effect({message="Ray Banned!",colour = G.C.SUITS.Clubs}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -209,14 +210,15 @@ SMODS.Joker{
     end,
     calculate = function(self,card,context)
         if context.individual and context.cardarea == G.play then
-            if context.other_card:is_suit("Spades") then
+            local othercard = context.other_card
+            if othercard:is_suit("Spades") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -225,32 +227,32 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Hearts")
+                                SMODS.change_base(othercard, "Hearts")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Hearts}, context.other_card)
+                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Hearts}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
                         delay(0.5)
                     end
                 }
-            elseif context.other_card:is_suit("Clubs") then
+            elseif othercard:is_suit("Clubs") then
                 return {
                     func = function()
                         G.E_MANAGER:add_event(Event({
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('card1', 1)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -259,18 +261,18 @@ SMODS.Joker{
                             trigger = 'after',
                             delay = 0.1,
                             func = function()
-                                SMODS.change_base(context.other_card, "Diamonds")
+                                SMODS.change_base(othercard, "Diamonds")
                                 return true
                             end
                         }))
-                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Diamonds}, context.other_card)
+                        SMODS.calculate_effect({message="Red Handed!",colour = G.C.SUITS.Diamonds}, othercard)
                         G.E_MANAGER:add_event(Event({
                             trigger = 'after',
                             delay = 0.15,
                             func = function()
-                                context.other_card:flip()
+                                othercard:flip()
                                 play_sound('tarot2', 1, 0.6)
-                                context.other_card:juice_up(0.3, 0.3)
+                                othercard:juice_up(0.3, 0.3)
                                 return true
                             end
                         }))
@@ -316,5 +318,3 @@ SMODS.Joker{
         end
     end
 }
-
--- add an anim to Ray Banned and Red Handed
