@@ -394,7 +394,7 @@ SMODS.Joker{
                 return
             elseif itemIndex == 3 then
                 SMODS.calculate_effect({message="Planets!",colour = G.C.FILTER}, card)
-                pseudorandom("flor_buccojimbo_planets",1,card.ability.extra.planet_max)
+                local planetRandom = pseudorandom("flor_buccojimbo_planets",1,card.ability.extra.planet_max)
                 for count = 1,planetRandom,1 do
                     SMODS.add_card({set = "Planet",soulable = true})
                 end
